@@ -22,7 +22,7 @@ extension ResponsiveTextStyle on TextStyle {
 TextStyle getHeadingStyle(BuildContext context) {
   return GoogleFonts.archivo(
     color: Colors.black,
-    fontSize: 35,
+    fontSize: 40,
     fontWeight: FontWeight.bold,
   ).responsive(context);
 }
@@ -30,7 +30,7 @@ TextStyle getHeadingStyle(BuildContext context) {
 TextStyle getSubHeadingStyle(BuildContext context) {
   return GoogleFonts.archivo(
     color: Colors.black,
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: FontWeight.bold,
   ).responsive(context);
 }
@@ -53,14 +53,14 @@ TextStyle getInfoStyle(BuildContext context) {
 TextStyle getHintTextStyle(BuildContext context) {
   return GoogleFonts.archivo(
     color: hintTextColor,
-    fontSize: 16,
+    fontSize: 17,
   ).responsive(context);
 }
 
 TextStyle getButtonTextStyle(BuildContext context) {
   return GoogleFonts.archivo(
     color: Colors.white,
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: FontWeight.bold,
   ).responsive(context);
 }

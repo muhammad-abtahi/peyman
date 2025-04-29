@@ -13,6 +13,8 @@ class SignUpController extends GetxController {
   TextEditingController phoneNumber = TextEditingController();
   TextEditingController date = TextEditingController();
   TextEditingController emiratesId = TextEditingController();
+  TextEditingController passportNo = TextEditingController();
+
   TextEditingController residenceAddress = TextEditingController();
 
   TextEditingController firstName = TextEditingController();
@@ -57,7 +59,7 @@ class SignUpController extends GetxController {
       child: DropdownButtonHideUnderline(
         child: DropdownButton2<String>(
           customButton: Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 8),
+            padding: const EdgeInsets.only(left: 14.0, right: 8),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -137,7 +139,7 @@ class SignUpController extends GetxController {
       child: DropdownButtonHideUnderline(
         child: DropdownButton2<String>(
           customButton: Padding(
-            padding: const EdgeInsets.only(left: 20.0, right: 8),
+            padding: const EdgeInsets.only(left: 14.0, right: 8),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [

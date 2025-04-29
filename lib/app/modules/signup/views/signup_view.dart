@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:peyman/Utils/app_colors.dart';
+import 'package:peyman/Utils/emiratesId_formatter.dart';
 import 'package:peyman/Utils/font_style.dart';
 import 'package:peyman/Utils/images.dart';
+import 'package:peyman/Utils/number_formatter.dart';
 import 'package:peyman/widgets/custom_button.dart';
+import 'package:peyman/widgets/responsive/adaptive_reolution.dart';
+import 'package:peyman/widgets/responsive/responsive_layout.dart';
 import 'package:peyman/widgets/textfield.dart';
-import 'package:responsive_framework/responsive_framework.dart';
+// import 'package:responsive_framework/responsive_framework.dart';
 
 import '../controllers/signup_controller.dart';
 
@@ -14,42 +18,36 @@ class SignUpView extends GetView<SignUpController> {
   const SignUpView({super.key});
   @override
   Widget build(BuildContext context) {
-    final bool isMobile =
-        ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET);
+    // final bool isMobile =
+    //     ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET);
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
+      body: ResponsiveLayout(
+        dekstopWidget: Row(
           children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (isMobile) ...[
-                  Expanded(
-                      child: SingleChildScrollView(
-                          child: _FormWidget(controller: controller))),
-                ] else ...[
-                  Expanded(
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: Get.height,
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(
-                          minHeight: Get.height,
-                        ),
-                        child: SingleChildScrollView(
-                          child: IntrinsicHeight(
-                            child: _FormWidget(controller: controller),
-                          ),
-                        ),
-                      ),
+            Expanded(
+              child: Container(
+                alignment: Alignment.center,
+                height: Get.height,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: Get.height,
+                  ),
+                  child: SingleChildScrollView(
+                    child: IntrinsicHeight(
+                      child: _FormWidget(controller: controller),
                     ),
                   ),
-                  _imageContainer(context),
-                ]
-              ],
+                ),
+              ),
             ),
+            _imageContainer(context),
           ],
+        ),
+        mobileWidget: Expanded(
+          child: SingleChildScrollView(
+            child: _FormWidget(controller: controller),
+          ),
         ),
       ),
     );
@@ -88,7 +86,12 @@ class _FormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 31.0, horizontal: 80),
+      padding: EdgeInsets.only(
+        top: 70.h,
+        left: 80.w,
+        right: 80.w,
+        bottom: 52.h,
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,15 +100,15 @@ class _FormWidget extends StatelessWidget {
             'Personal Info',
             style: getHeadingStyle(context),
           ),
-          const SizedBox(
-            height: 5,
+          SizedBox(
+            height: 10.h,
           ),
           Text(
             'Please enter your personal information e.g. name, address, date of birth, etc.',
             style: getInfoStyle(context),
           ),
-          const SizedBox(
-            height: 20,
+          SizedBox(
+            height: 30.h,
           ),
           Row(
             children: [
@@ -115,8 +118,8 @@ class _FormWidget extends StatelessWidget {
                   hintText: "Enter Yout First Name",
                 ),
               ),
-              const SizedBox(
-                width: 18,
+              SizedBox(
+                width: 20.w,
               ),
               Expanded(
                 child: CustomTextfield(
@@ -126,44 +129,51 @@ class _FormWidget extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(
-            height: 20,
+          SizedBox(
+            height: 20.h,
           ),
           CustomTextfield(
             controller: controller.emailAddress,
             hintText: "Enter Email Address *",
           ),
-          const SizedBox(
-            height: 20,
+          SizedBox(
+            height: 20.h,
           ),
           Obx(
             () => CustomTextfield(
                 prefix: controller.numberSelecter(context),
                 controller: controller.phoneNumber,
+                inputFormatters: [SimplePhoneFormatter()],
                 hintText: '555 0000 555 0000'),
           ),
-          const SizedBox(
-            height: 20,
+          SizedBox(
+            height: 20.h,
           ),
           Text(
             'Ownership Verification Type',
             style: getSubHeadingStyle(context),
           ),
-          const SizedBox(
-            height: 20,
+          SizedBox(
+            height: 20.h,
           ),
           RadioButtons(controller: controller),
-          const SizedBox(
-            height: 20,
+          SizedBox(
+            height: 20.h,
           ),
           Obx(
-            () => CustomTextfield(
-                prefix: controller.emiratesIdSelecter(context),
-                controller: controller.emiratesId,
-                hintText: '1-1234567-1'),
+            () =>
+                controller.selectedId.value == controller.emiratesRadioId.value
+                    ? CustomTextfield(
+                        prefix: controller.emiratesIdSelecter(context),
+                        controller: controller.emiratesId,
+                        inputFormatters: [EmiratesIdFormatter()],
+                        hintText: '1-1234567-1')
+                    : CustomTextfield(
+                        controller: controller.passportNo,
+                        hintText: 'Enter Passport Number'),
           ),
-          const SizedBox(
-            height: 20,
+          SizedBox(
+            height: 20.h,
           ),
           CustomTextfield(
               controller: controller.date,
@@ -179,12 +189,14 @@ class _FormWidget extends StatelessWidget {
                   ),
                 ),
               ),
+              readOnly: true,
               hintText: 'date of birth'),
-          const SizedBox(
-            height: 20,
+          SizedBox(
+            height: 20.h,
           ),
           CustomTextfield(
-              controller: controller.phoneNumber, hintText: 'Resident Address'),
+              controller: controller.residenceAddress,
+              hintText: 'Resident Address'),
           CustomButton(label: 'Continue', onPressed: () {}),
           Center(
             child: Row(
