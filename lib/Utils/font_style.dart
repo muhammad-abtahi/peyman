@@ -11,7 +11,7 @@ extension ResponsiveTextStyle on TextStyle {
       scaleFactor = 1.2;
     } else if (ResponsiveBreakpoints.of(context).largerThan(TABLET)) {
       scaleFactor = 1.1;
-    } else if (ResponsiveBreakpoints.of(context).smallerThan(TABLET)) {
+    } else if (ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET)) {
       scaleFactor = 0.9;
     }
 
@@ -38,6 +38,14 @@ TextStyle getSubHeadingStyle(BuildContext context) {
 TextStyle getFontStyle(BuildContext context) {
   return GoogleFonts.archivo(
     color: Colors.black,
+    fontSize: 16,
+  ).responsive(context);
+}
+
+TextStyle getWarningFontStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: warningTextColor,
+    height: 1.5,
     fontSize: 16,
   ).responsive(context);
 }

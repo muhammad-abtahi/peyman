@@ -39,7 +39,7 @@ dependencies:
   dropdown_button2: ^2.3.9
   intl: ^0.18.1
   responsive_framework: ^1.5.1
-  # flutter_screenutil: ^5.9.3
+  dotted_line: ^3.2.3
 
 dev_dependencies:
   flutter_test:

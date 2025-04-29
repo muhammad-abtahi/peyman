@@ -5,29 +5,15 @@ import 'package:intl/intl.dart';
 import 'package:peyman/Utils/app_colors.dart';
 import 'package:peyman/Utils/font_style.dart';
 
-class SignUpController extends GetxController {
+class LoginController extends GetxController {
   RxInt emiratesRadioId = 0.obs;
-  RxInt passportRadioId = 1.obs;
+  RxInt dateOfBirthRadioId = 1.obs;
+  RxInt passportRadioId = 2.obs;
+
   RxInt selectedId = 0.obs;
-    RxBool permissionToStoreImage = false.obs;
-
-
-  TextEditingController phoneNumber = TextEditingController();
   TextEditingController date = TextEditingController();
   TextEditingController emiratesId = TextEditingController();
   TextEditingController passportNo = TextEditingController();
-
-  TextEditingController residenceAddress = TextEditingController();
-
-  TextEditingController firstName = TextEditingController();
-  TextEditingController lastName = TextEditingController();
-  TextEditingController emailAddress = TextEditingController();
-  final List<String> items = [
-    '+971',
-    '+972',
-    '+973',
-  ];
-  RxString? selectedValue = '+971'.obs;
 
   final List<String> idItems = [
     '784',
@@ -50,7 +36,7 @@ class SignUpController extends GetxController {
     }
   }
 
-    Widget emiratesIdSelecter(BuildContext context) {
+  Widget emiratesIdSelecter(BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(
         splashColor: Colors.transparent,
@@ -128,86 +114,4 @@ class SignUpController extends GetxController {
       ),
     );
   }
-
-  Widget numberSelecter(BuildContext context) {
-    return Theme(
-      data: Theme.of(context).copyWith(
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        hoverColor: Colors.transparent,
-        focusColor: Colors.transparent,
-      ),
-      child: DropdownButtonHideUnderline(
-        child: DropdownButton2<String>(
-          customButton: Padding(
-            padding: const EdgeInsets.only(left: 14.0, right: 8),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  selectedValue?.value ?? "",
-                  style: getHintTextStyle(context)
-                      .copyWith(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(width: 8),
-                Center(
-                  child: Container(
-                    color: Colors.grey,
-                    height: 18,
-                    width: .75,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          style: getHintTextStyle(context)
-              .copyWith(color: Colors.black, fontSize: 16),
-          buttonStyleData: null,
-          iconStyleData: const IconStyleData(iconSize: 0),
-          hint: Text(
-            selectedValue?.value ?? "",
-            style: getInfoStyle(context),
-          ),
-          items: items
-              .map(
-                (String item) => DropdownMenuItem<String>(
-                  value: item,
-                  child: Text(
-                    item,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              )
-              .toList(),
-          value: selectedValue?.value,
-          onChanged: (String? value) {
-            selectedValue?.value = value!;
-            update();
-          },
-          dropdownStyleData: DropdownStyleData(
-            maxHeight: 200,
-            width: 500,
-            offset: const Offset(-20, 0),
-            decoration: const BoxDecoration(color: backgroundColor),
-            scrollbarTheme: ScrollbarThemeData(
-              radius: const Radius.circular(40),
-              thickness: MaterialStateProperty.all<double>(6),
-              thumbVisibility: MaterialStateProperty.all<bool>(true),
-            ),
-          ),
-          menuItemStyleData: const MenuItemStyleData(
-            height: 40,
-            padding: EdgeInsets.only(left: 14, right: 14),
-          ),
-        ),
-      ),
-    );
-  }
-
-
 }
