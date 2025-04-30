@@ -37,7 +37,22 @@ class CustomTextfield extends StatelessWidget {
         ),
         prefixIcon: prefix,
         suffixIcon: suffix,
-        suffixIconConstraints: BoxConstraints(maxHeight: 35, maxWidth: 35),
+        label: RichText(
+          text: TextSpan(
+            text: hintText,
+            style: getHintTextStyle(context),
+            children: [
+              TextSpan(
+                text: ' *',
+                style: getHintTextStyle(context).copyWith(
+                  color: Colors.red,
+                ),
+              )
+            ],
+          ),
+        ),
+        floatingLabelBehavior: FloatingLabelBehavior.never,
+        suffixIconConstraints: const BoxConstraints(maxHeight: 35, maxWidth: 35),
         focusedBorder: const OutlineInputBorder(
           borderSide: BorderSide(
             color: primaryColor,
@@ -46,8 +61,7 @@ class CustomTextfield extends StatelessWidget {
             Radius.circular(5),
           ),
         ),
-        hintText: hintText,
-        hintStyle: getHintTextStyle(context),
+        labelStyle: getHintTextStyle(context),
       ),
     );
   }

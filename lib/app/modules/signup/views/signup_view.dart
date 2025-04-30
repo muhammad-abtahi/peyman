@@ -1,17 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:peyman/Utils/app_colors.dart';
-import 'package:peyman/Utils/font_style.dart';
 import 'package:peyman/Utils/images.dart';
-import 'package:peyman/Utils/number_formatter.dart';
-import 'package:peyman/app/routes/app_pages.dart';
-import 'package:peyman/widgets/custom_button.dart';
 import 'package:peyman/widgets/responsive/adaptive_reolution.dart';
 import 'package:peyman/widgets/responsive/responsive_layout.dart';
-import 'package:peyman/widgets/signUp_header.dart';
-import 'package:peyman/widgets/textfield.dart';
-
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../controllers/signup_controller.dart';
 
 class SignUpView extends GetView<SignUpController> {
@@ -41,7 +33,7 @@ class SignUpView extends GetView<SignUpController> {
     );
   }
 
-  _imageContainer(BuildContext context) {
+  Widget buildPage() {
     return Expanded(
       child: Container(
         height: Get.height,
@@ -53,12 +45,141 @@ class SignUpView extends GetView<SignUpController> {
         ),
         alignment: Alignment.bottomLeft,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 80.0, horizontal: 20),
+          padding: EdgeInsets.symmetric(vertical: 100.h, horizontal: 61.w),
           child: Image.asset(
             Images.signUpText,
+            height: 158.h,
+            width: 417.w,
             fit: BoxFit.contain,
           ),
         ),
+      ),
+    );
+  }
+
+  Widget buildPage1() {
+    return Expanded(
+      child: Container(
+        height: Get.height,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(Images.signUpBackground),
+            fit: BoxFit.cover,
+          ),
+        ),
+        alignment: Alignment.bottomLeft,
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 100.h, horizontal: 61.w),
+          child: Image.asset(
+            Images.signUpText,
+            height: 158.h,
+            width: 417.w,
+            fit: BoxFit.contain,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildPage2() {
+    return Expanded(
+      child: Container(
+        height: Get.height,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(Images.signUpBackground),
+            fit: BoxFit.cover,
+          ),
+        ),
+        alignment: Alignment.bottomLeft,
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 100.h, horizontal: 61.w),
+          child: Image.asset(
+            Images.signUpText,
+            height: 158.h,
+            width: 417.w,
+            fit: BoxFit.contain,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildPage3() {
+    return Expanded(
+      child: Container(
+        height: Get.height,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(Images.signUpBackground),
+            fit: BoxFit.cover,
+          ),
+        ),
+        alignment: Alignment.bottomLeft,
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 100.h, horizontal: 61.w),
+          child: Image.asset(
+            Images.signUpText,
+            height: 158.h,
+            width: 417.w,
+            fit: BoxFit.contain,
+          ),
+        ),
+      ),
+    );
+  }
+
+  _imageContainer(BuildContext context) {
+    return Expanded(
+      child: Stack(
+        alignment: Alignment.bottomRight,
+        children: [
+          Expanded(
+            child: PageView(
+              controller: controller.pageController,
+              children: [
+                buildPage(),
+                buildPage1(),
+                buildPage2(),
+                buildPage3(),
+              ],
+            ),
+          ),
+          Container(
+            alignment: Alignment.bottomRight,
+            height: Get.height,
+            padding: EdgeInsets.only(bottom: 100.h, right: 61.w),
+            child: SmoothPageIndicator(
+              controller: controller.pageController,
+              count: 4,
+              effect: CustomizableEffect(
+                activeDotDecoration: DotDecoration(
+                  width: 18.w,
+                  height: 9.h,
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(37),
+                ),
+                dotDecoration: DotDecoration(
+                  width: 9.w,
+                  height: 9.h,
+                  color: Colors.transparent,
+                  dotBorder: DotBorder(
+                    padding: 1,
+                    width: 1.w,
+                    color: Colors.white,
+                  ),
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(5),
+                      topRight: Radius.circular(5),
+                      bottomLeft: Radius.circular(5),
+                      bottomRight: Radius.circular(5)),
+                  verticalOffset: 0,
+                ),
+                spacing: 4.w,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -75,261 +196,23 @@ class _FormWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        top: 90.h,
+        top: 70.h,
         left: 80.w,
         right: 80.w,
         bottom: 32.h,
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SignUpHeader(
-            infoText:
-                'Please enter your personal information e.g. name, address, date of birth, etc.',
-            stageNumber: "1",
-            label: 'Personal Info',
-          ),
-
-          SizedBox(
-            height: 30.h,
-          ),
-          // Row(
-          //   children: [
-          //     Expanded(
-          //       child: CustomTextfield(
-          //         controller: controller.firstName,
-          //         hintText: "Enter Yout First Name",
-          //       ),
-          //     ),
-          //     SizedBox(
-          //       width: 20.w,
-          //     ),
-          //     Expanded(
-          //       child: CustomTextfield(
-          //         controller: controller.lastName,
-          //         hintText: "Enter Yout Last Name",
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          // SizedBox(
-          //   height: 20.h,
-          // ),
-          CustomTextfield(
-            controller: controller.emailAddress,
-            hintText: "Enter Email Address *",
-          ),
-          SizedBox(
-            height: 20.h,
-          ),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(20),
-            alignment: Alignment.topCenter,
-            decoration: const BoxDecoration(
-              color: warningContainerColor,
-              borderRadius: BorderRadius.all(
-                Radius.circular(5),
-              ),
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                // Warning icon positioned at the top-left
-                Padding(
-                  padding: const EdgeInsets.only(
-                      right: 12.0,
-                      bottom: 0,
-                      top:
-                          7), // Add some right padding and slight top adjustment
-                  child: Image.asset(
-                    Images.alert,
-                    width: 20,
-                    // height: 20.h,
-                  ),
-                ),
-
-                // Text content that takes remaining width
-                Expanded(
-                  child: Text(
-                    'Make sure this email matches the one registered with the Dubai Land Department (DLD). It will be used for verification and official communication.',
-                    style: getWarningFontStyle(context),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 20.h,
-          ),
-          Obx(
-            () => CustomTextfield(
-                prefix: controller.numberSelecter(context),
-                controller: controller.phoneNumber,
-                inputFormatters: [SimplePhoneFormatter()],
-                hintText: '555 0000 555 0000'),
-          ),
-          // SizedBox(
-          //   height: 20.h,
-          // ),
-          // Text(
-          //   'Ownership Verification Type',
-          //   style: getSubHeadingStyle(context),
-          // ),
-          // SizedBox(
-          //   height: 20.h,
-          // ),
-          // RadioButtons(controller: controller),
-          // SizedBox(
-          //   height: 20.h,
-          // ),
-          // Obx(
-          //   () =>
-          //       controller.selectedId.value == controller.emiratesRadioId.value
-          //           ? CustomTextfield(
-          //               prefix: controller.emiratesIdSelecter(context),
-          //               controller: controller.emiratesId,
-          //               inputFormatters: [EmiratesIdFormatter()],
-          //               hintText: '1-1234567-1')
-          //           : CustomTextfield(
-          //               controller: controller.passportNo,
-          //               hintText: 'Enter Passport Number'),
-          // ),
-          // SizedBox(
-          //   height: 20.h,
-          // ),
-          // CustomTextfield(
-          //     controller: controller.date,
-          //     suffix: GestureDetector(
-          //       onTap: () {
-          //         controller.pickDate(context);
-          //       },
-          //       child: Padding(
-          //         padding: const EdgeInsets.only(right: 12.0),
-          //         child: Image.asset(
-          //           Images.calendar,
-          //           width: 30,
-          //         ),
-          //       ),
-          //     ),
-          //     readOnly: true,
-          //     hintText: 'date of birth'),
-          // SizedBox(
-          //   height: 20.h,
-          // ),
-          // CustomTextfield(
-          //     controller: controller.residenceAddress,
-          //     hintText: 'Resident Address'),
-          CustomButton(
-            label: 'Continue',
-            onPressed: () {
-              print(
-                  'Button pressed - attempting navigation to ${Routes.signUp2}');
-
-              Get.toNamed(Routes.signUp2);
-              // controller.update();
-            },
-          ),
-          SizedBox(
-            height: 230.h,
-          ),
-          Center(
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  "Already having an account?  ",
-                  style: getFontStyle(context),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Get.toNamed(Routes.login);
-                  },
-                  child: Text(
-                    "SIGN IN",
-                    style: getFontStyle(context).copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: primaryColor,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class RadioButtons extends StatelessWidget {
-  const RadioButtons({
-    super.key,
-    required this.controller,
-  });
-
-  final SignUpController controller;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Obx(
-          () => GestureDetector(
-            onTap: () {
-              controller.selectedId.value = controller.emiratesRadioId.value;
-              controller.update();
-            },
-            child: Row(
-              children: [
-                Image.asset(
-                  controller.selectedId.value ==
-                          controller.emiratesRadioId.value
-                      ? Images.radioSelected
-                      : Images.radioUnselected,
-                  width: 17,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'Emirates ID',
-                  style: getFontStyle(context),
-                ),
-              ],
-            ),
-          ),
+      child: GetBuilder<SignUpController>(
+        builder: (controller) => AnimatedSwitcher(
+          duration: const Duration(milliseconds: 400),
+          transitionBuilder: (Widget child, Animation<double> animation) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
+          child: controller.pageOption[controller.currentSignUpStep.value],
         ),
-        const Spacer(),
-        Obx(
-          () => GestureDetector(
-            onTap: () {
-              controller.selectedId.value = controller.passportRadioId.value;
-              controller.update();
-            },
-            child: Row(
-              children: [
-                Image.asset(
-                  controller.selectedId.value ==
-                          controller.passportRadioId.value
-                      ? Images.radioSelected
-                      : Images.radioUnselected,
-                  width: 17,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'Passport Number',
-                  style: getFontStyle(context),
-                ),
-              ],
-            ),
-          ),
-        )
-      ],
+      ),
     );
   }
 }

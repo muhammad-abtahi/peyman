@@ -21,7 +21,6 @@ class SignUpHeader extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Expanded(
-          // width: 475.w,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

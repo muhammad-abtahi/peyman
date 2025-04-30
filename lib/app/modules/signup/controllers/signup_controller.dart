@@ -4,13 +4,21 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:peyman/Utils/app_colors.dart';
 import 'package:peyman/Utils/font_style.dart';
+import 'package:peyman/app/modules/signup/views/signup_first.dart';
+import 'package:peyman/app/modules/signup/views/signup_second.dart';
+import 'package:peyman/app/modules/signup/views/signup_third.dart';
 
 class SignUpController extends GetxController {
   RxInt emiratesRadioId = 0.obs;
   RxInt passportRadioId = 1.obs;
   RxInt selectedId = 0.obs;
-    RxBool permissionToStoreImage = false.obs;
 
+  RxBool permissionToStoreImage = false.obs;
+
+  RxInt signupStep1 = 0.obs;
+  RxInt signupStep2 = 1.obs;
+  RxInt signupStep3 = 2.obs;
+  RxInt currentSignUpStep = 0.obs;
 
   TextEditingController phoneNumber = TextEditingController();
   TextEditingController date = TextEditingController();
@@ -22,6 +30,7 @@ class SignUpController extends GetxController {
   TextEditingController firstName = TextEditingController();
   TextEditingController lastName = TextEditingController();
   TextEditingController emailAddress = TextEditingController();
+
   final List<String> items = [
     '+971',
     '+972',
@@ -35,6 +44,21 @@ class SignUpController extends GetxController {
     '786',
   ];
   RxString? selectedValueId = '784'.obs;
+
+  late final List<Widget> pageOption = [
+    SignUpFirst(
+      controller: this,
+    ),
+    SignUpSecond(
+      controller: this,
+    ),
+    SignUpThird(
+      controller: this,
+    ),
+  ];
+
+  final PageController pageController = PageController();
+
   Future<void> pickDate(BuildContext context) async {
     DateTime? picked = await showDatePicker(
       initialDatePickerMode: DatePickerMode.day,
@@ -50,7 +74,7 @@ class SignUpController extends GetxController {
     }
   }
 
-    Widget emiratesIdSelecter(BuildContext context) {
+  Widget emiratesIdSelecter(BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(
         splashColor: Colors.transparent,
@@ -146,8 +170,10 @@ class SignUpController extends GetxController {
               children: [
                 Text(
                   selectedValue?.value ?? "",
-                  style: getHintTextStyle(context)
-                      .copyWith(fontWeight: FontWeight.bold),
+                  style: getHintTextStyle(context).copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 17),
                 ),
                 const SizedBox(width: 8),
                 Center(
@@ -208,6 +234,4 @@ class SignUpController extends GetxController {
       ),
     );
   }
-
-
 }

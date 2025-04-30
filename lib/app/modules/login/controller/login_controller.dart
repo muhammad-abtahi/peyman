@@ -21,6 +21,7 @@ class LoginController extends GetxController {
     '786',
   ];
   RxString? selectedValueId = '784'.obs;
+
   Future<void> pickDate(BuildContext context) async {
     DateTime? picked = await showDatePicker(
       initialDatePickerMode: DatePickerMode.day,
@@ -53,7 +54,10 @@ class LoginController extends GetxController {
               children: [
                 Text(
                   selectedValueId?.value ?? "",
-                  style: getHintTextStyle(context).copyWith(),
+                  style: getHintTextStyle(context).copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 17),
                 ),
                 const SizedBox(width: 8),
                 Center(
@@ -67,7 +71,7 @@ class LoginController extends GetxController {
             ),
           ),
           style: getHintTextStyle(context)
-              .copyWith(color: Colors.black, fontSize: 16),
+              .copyWith(fontWeight: FontWeight.bold, color: Colors.black),
           buttonStyleData: null,
           iconStyleData: const IconStyleData(iconSize: 0),
           hint: Text(

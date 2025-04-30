@@ -13,15 +13,11 @@ import 'package:peyman/widgets/responsive/adaptive_reolution.dart';
 import 'package:peyman/widgets/responsive/responsive_layout.dart';
 import 'package:peyman/widgets/signUp_header.dart';
 import 'package:peyman/widgets/textfield.dart';
-// import 'package:responsive_framework/responsive_framework.dart';
 
 class LoginView extends GetView<LoginController> {
   const LoginView({super.key});
   @override
   Widget build(BuildContext context) {
-    // final bool isMobile =
-    //     ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET);
-
     return Scaffold(
       body: ResponsiveLayout(
         dekstopWidget: Row(
@@ -60,6 +56,8 @@ class LoginView extends GetView<LoginController> {
           padding: const EdgeInsets.symmetric(vertical: 80.0, horizontal: 20),
           child: Image.asset(
             Images.signUpText,
+            height: 158.h,
+            width: 417.w,
             fit: BoxFit.contain,
           ),
         ),
@@ -79,7 +77,7 @@ class _FormWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        top: 90.h,
+        top: 70.h,
         left: 80.w,
         right: 80.w,
         bottom: 32.h,
@@ -140,7 +138,7 @@ class _FormWidget extends StatelessWidget {
           CustomButton(
             label: 'Login',
             onPressed: () {
-              Get.toNamed(Routes.signUp2);
+              Get.toNamed(Routes.dashboard);
             },
           ),
           SizedBox(
@@ -177,7 +175,9 @@ class _FormWidget extends StatelessWidget {
                   style: getFontStyle(context),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(Routes.signUp);
+                  },
                   child: Text(
                     "Sign Up",
                     style: getFontStyle(context).copyWith(
@@ -214,14 +214,12 @@ class FingerPrintLogin extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Fingerprint Icon
             Image.asset(
               Images.thumbIcon,
               width: 35,
               height: 40,
             ),
             SizedBox(width: 20.w),
-            // Text
             Text(
               'Login with UAE Pass',
               style: getButtonTextStyle(context).copyWith(
@@ -245,286 +243,189 @@ class RadioButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 20.h),
-      child: Wrap(
-        spacing: 15,
-        runSpacing: 15,
-        crossAxisAlignment: WrapCrossAlignment.center,
-        direction: Axis.horizontal,
-        verticalDirection: VerticalDirection.up,
-        runAlignment: WrapAlignment.center,
-        children: [
-          Obx(
-            () => GestureDetector(
-              onTap: () {
-                controller.selectedId.value = controller.emiratesRadioId.value;
-                controller.update();
-              },
-              child: Row(
-                children: [
-                  Image.asset(
-                    controller.selectedId.value ==
-                            controller.emiratesRadioId.value
-                        ? Images.radioSelected
-                        : Images.radioUnselected,
-                    width: 17,
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    'Emirates ID',
-                    style: getFontStyle(context),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Obx(
-            () => GestureDetector(
-              onTap: () {
-                controller.selectedId.value =
-                    controller.dateOfBirthRadioId.value;
-                controller.update();
-              },
-              child: Row(
-                children: [
-                  Image.asset(
-                    controller.selectedId.value ==
-                            controller.dateOfBirthRadioId.value
-                        ? Images.radioSelected
-                        : Images.radioUnselected,
-                    width: 17,
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    'Date of Birth',
-                    style: getFontStyle(context),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Obx(
-            () => GestureDetector(
-              onTap: () {
-                controller.selectedId.value = controller.passportRadioId.value;
-                controller.update();
-              },
-              child: Row(
-                children: [
-                  Image.asset(
-                    controller.selectedId.value ==
-                            controller.passportRadioId.value
-                        ? Images.radioSelected
-                        : Images.radioUnselected,
-                    width: 17,
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    'Passport Number',
-                    style: getFontStyle(context),
-                  ),
-                ],
-              ),
-            ),
-          )
-        ],
-      ),
+      child:
+
+
+          Get.width >= 1440
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Obx(
+                      () => GestureDetector(
+                        onTap: () {
+                          controller.selectedId.value =
+                              controller.emiratesRadioId.value;
+                          controller.update();
+                        },
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              controller.selectedId.value ==
+                                      controller.emiratesRadioId.value
+                                  ? Images.radioSelected
+                                  : Images.radioUnselected,
+                              height: 18,
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Emirates ID',
+                              style: getFontStyle(context),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Obx(
+                      () => GestureDetector(
+                        onTap: () {
+                          controller.selectedId.value =
+                              controller.dateOfBirthRadioId.value;
+                          controller.update();
+                        },
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              controller.selectedId.value ==
+                                      controller.dateOfBirthRadioId.value
+                                  ? Images.radioSelected
+                                  : Images.radioUnselected,
+                              height: 18,
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Date of Birth',
+                              style: getFontStyle(context),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Obx(
+                      () => GestureDetector(
+                        onTap: () {
+                          controller.selectedId.value =
+                              controller.passportRadioId.value;
+                          controller.update();
+                        },
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              controller.selectedId.value ==
+                                      controller.passportRadioId.value
+                                  ? Images.radioSelected
+                                  : Images.radioUnselected,
+                              height: 18,
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Passport Number',
+                              style: getFontStyle(context),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                )
+              : Wrap(
+                  spacing: 15,
+                  runSpacing: 15,
+                  alignment: WrapAlignment.center,
+                  runAlignment: WrapAlignment.center,
+                  children: [
+                    Obx(
+                      () => GestureDetector(
+                        onTap: () {
+                          controller.selectedId.value =
+                              controller.emiratesRadioId.value;
+                          controller.update();
+                        },
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              controller.selectedId.value ==
+                                      controller.emiratesRadioId.value
+                                  ? Images.radioSelected
+                                  : Images.radioUnselected,
+                              width: 17,
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Emirates ID',
+                              style: getFontStyle(context),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Obx(
+                      () => GestureDetector(
+                        onTap: () {
+                          controller.selectedId.value =
+                              controller.dateOfBirthRadioId.value;
+                          controller.update();
+                        },
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              controller.selectedId.value ==
+                                      controller.dateOfBirthRadioId.value
+                                  ? Images.radioSelected
+                                  : Images.radioUnselected,
+                              width: 17,
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Date of Birth',
+                              style: getFontStyle(context),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Obx(
+                      () => GestureDetector(
+                        onTap: () {
+                          controller.selectedId.value =
+                              controller.passportRadioId.value;
+                          controller.update();
+                        },
+                        child: Row(
+                          children: [
+                            Image.asset(
+                              controller.selectedId.value ==
+                                      controller.passportRadioId.value
+                                  ? Images.radioSelected
+                                  : Images.radioUnselected,
+                              width: 17,
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Passport Number',
+                              style: getFontStyle(context),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
     );
-
-    //     Padding(
-    //   padding: EdgeInsets.symmetric(vertical: 20.h),
-    //   child: LayoutBuilder(
-    //     builder: (context, constraints) {
-    //       double minWidthForSingleRow = 450;
-
-    //       if (constraints.maxWidth >= minWidthForSingleRow) {
-    //         return Row(
-    //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    //           mainAxisSize: MainAxisSize.min,
-    //           children: [
-    //             Obx(
-    //               () => GestureDetector(
-    //                 onTap: () {
-    //                   controller.selectedId.value =
-    //                       controller.emiratesRadioId.value;
-    //                   controller.update();
-    //                 },
-    //                 child: Row(
-    //                   children: [
-    //                     Image.asset(
-    //                       controller.selectedId.value ==
-    //                               controller.emiratesRadioId.value
-    //                           ? Images.radioSelected
-    //                           : Images.radioUnselected,
-    //                       width: 17,
-    //                     ),
-    //                     const SizedBox(
-    //                       width: 10,
-    //                     ),
-    //                     Text(
-    //                       'Emirates ID',
-    //                       style: getFontStyle(context),
-    //                     ),
-    //                   ],
-    //                 ),
-    //               ),
-    //             ),
-    //             Obx(
-    //               () => GestureDetector(
-    //                 onTap: () {
-    //                   controller.selectedId.value =
-    //                       controller.dateOfBirthRadioId.value;
-    //                   controller.update();
-    //                 },
-    //                 child: Row(
-    //                   children: [
-    //                     Image.asset(
-    //                       controller.selectedId.value ==
-    //                               controller.dateOfBirthRadioId.value
-    //                           ? Images.radioSelected
-    //                           : Images.radioUnselected,
-    //                       width: 17,
-    //                     ),
-    //                     const SizedBox(
-    //                       width: 10,
-    //                     ),
-    //                     Text(
-    //                       'Date of Birth',
-    //                       style: getFontStyle(context),
-    //                     ),
-    //                   ],
-    //                 ),
-    //               ),
-    //             ),
-    //             Obx(
-    //               () => GestureDetector(
-    //                 onTap: () {
-    //                   controller.selectedId.value =
-    //                       controller.passportRadioId.value;
-    //                   controller.update();
-    //                 },
-    //                 child: Row(
-    //                   children: [
-    //                     Image.asset(
-    //                       controller.selectedId.value ==
-    //                               controller.passportRadioId.value
-    //                           ? Images.radioSelected
-    //                           : Images.radioUnselected,
-    //                       width: 17,
-    //                     ),
-    //                     const SizedBox(
-    //                       width: 10,
-    //                     ),
-    //                     Text(
-    //                       'Passport Number',
-    //                       style: getFontStyle(context),
-    //                     ),
-    //                   ],
-    //                 ),
-    //               ),
-    //             )
-    //           ],
-    //         );
-    //       } else {
-    //         return Wrap(
-    //           spacing: 15,
-    //           runSpacing: 15,
-    //           alignment: WrapAlignment.center,
-    //           runAlignment: WrapAlignment.center,
-    //           children: [
-    //             Obx(
-    //               () => GestureDetector(
-    //                 onTap: () {
-    //                   controller.selectedId.value =
-    //                       controller.emiratesRadioId.value;
-    //                   controller.update();
-    //                 },
-    //                 child: Row(
-    //                   children: [
-    //                     Image.asset(
-    //                       controller.selectedId.value ==
-    //                               controller.emiratesRadioId.value
-    //                           ? Images.radioSelected
-    //                           : Images.radioUnselected,
-    //                       width: 17,
-    //                     ),
-    //                     const SizedBox(
-    //                       width: 10,
-    //                     ),
-    //                     Text(
-    //                       'Emirates ID',
-    //                       style: getFontStyle(context),
-    //                     ),
-    //                   ],
-    //                 ),
-    //               ),
-    //             ),
-    //             Obx(
-    //               () => GestureDetector(
-    //                 onTap: () {
-    //                   controller.selectedId.value =
-    //                       controller.dateOfBirthRadioId.value;
-    //                   controller.update();
-    //                 },
-    //                 child: Row(
-    //                   children: [
-    //                     Image.asset(
-    //                       controller.selectedId.value ==
-    //                               controller.dateOfBirthRadioId.value
-    //                           ? Images.radioSelected
-    //                           : Images.radioUnselected,
-    //                       width: 17,
-    //                     ),
-    //                     const SizedBox(
-    //                       width: 10,
-    //                     ),
-    //                     Text(
-    //                       'Date of Birth',
-    //                       style: getFontStyle(context),
-    //                     ),
-    //                   ],
-    //                 ),
-    //               ),
-    //             ),
-    //             Obx(
-    //               () => GestureDetector(
-    //                 onTap: () {
-    //                   controller.selectedId.value =
-    //                       controller.passportRadioId.value;
-    //                   controller.update();
-    //                 },
-    //                 child: Row(
-    //                   children: [
-    //                     Image.asset(
-    //                       controller.selectedId.value ==
-    //                               controller.passportRadioId.value
-    //                           ? Images.radioSelected
-    //                           : Images.radioUnselected,
-    //                       width: 17,
-    //                     ),
-    //                     const SizedBox(
-    //                       width: 10,
-    //                     ),
-    //                     Text(
-    //                       'Passport Number',
-    //                       style: getFontStyle(context),
-    //                     ),
-    //                   ],
-    //                 ),
-    //               ),
-    //             )
-    //           ],
-    //         );
-    //       }
-    //     },
-    //   ),
-    // );
   }
 }

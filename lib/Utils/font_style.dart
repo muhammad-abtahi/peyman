@@ -65,6 +65,43 @@ TextStyle getHintTextStyle(BuildContext context) {
   ).responsive(context);
 }
 
+TextStyle getAppBarTextStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: appBarTextColor,
+    fontSize: 24,
+  ).responsive(context);
+}
+
+TextStyle getDashBoardHeadingTextStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: Colors.black,
+    fontSize: 26,
+    fontWeight: FontWeight.bold,
+  ).responsive(context);
+}
+
+TextStyle getDashBoardBannerHeadingTextStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: primaryColor,
+    fontSize: 22,
+    fontWeight: FontWeight.bold,
+  ).responsive(context);
+}
+
+TextStyle getDashBoardBannerInfoTextStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: primaryColor,
+    fontSize: 16,
+  ).responsive(context);
+}
+
+TextStyle getDashBoardSubHeadingTextStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: Colors.black,
+    fontSize: 22,
+  ).responsive(context);
+}
+
 TextStyle getButtonTextStyle(BuildContext context) {
   return GoogleFonts.archivo(
     color: Colors.white,
