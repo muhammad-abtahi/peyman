@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 class AdaptivePixels {
   AdaptivePixels._();
 
-  static double _designWidth = Get.width;
-  static double _designHeight = Get.height;
+  static final double _designWidth = Get.width;
+  static final double _designHeight = Get.height;
 
   static double w(double px) {
     return Get.width * (px / _designWidth);
@@ -15,7 +15,6 @@ class AdaptivePixels {
     return Get.height * (px / _designHeight);
   }
 
-
   static double r(double px) {
     double widthRatio = Get.width / _designWidth;
     double heightRatio = Get.height / _designHeight;
@@ -23,12 +22,11 @@ class AdaptivePixels {
     return px * (widthRatio < heightRatio ? widthRatio : heightRatio);
   }
 
- 
   static double sp(double px) {
     double ratio = r(px);
 
-    const double minScale = 0.8; 
-    const double maxScale = 1.5; 
+    const double minScale = 0.8;
+    const double maxScale = 1.5;
 
     return px * (ratio.clamp(minScale, maxScale));
   }

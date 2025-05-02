@@ -35,8 +35,9 @@ class NavBarWidget extends StatelessWidget {
                 height: 32.h,
               ),
               SizedBox(
-                height: 96.88.h,
+                height: 232.h,
               ),
+              // Spacer(),
               Expanded(
                 child: Column(
                   children: [
@@ -99,68 +100,68 @@ class NavBarWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        onTap: () {},
-                        hoverColor: hoverColor,
-                        borderRadius: BorderRadius.circular(14),
-                        child: Ink(
-                          decoration: BoxDecoration(
-                            // color: hoverColor,
-                            borderRadius: BorderRadius.circular(14),
-                          ),
-                          child: Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 26.h, horizontal: 30.w),
-                              ),
-                              Image.asset(
-                                Images.userIcon,
-                                width: 22.w,
-                                height: 22.h,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Material(
-                      color: Colors.transparent,
-                      child: InkWell(
-                        onTap: () {},
-                        hoverColor: hoverColor,
-                        borderRadius: BorderRadius.circular(14),
-                        child: Ink(
-                          decoration: BoxDecoration(
-                            // color: hoverColor,
-                            borderRadius: BorderRadius.circular(14),
-                          ),
-                          child: Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 26.h, horizontal: 30.w),
-                              ),
-                              Image.asset(
-                                Images.settingsIcon,
-                                width: 22.w,
-                                height: 22.h,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
+                    // SizedBox(
+                    //   height: 10.h,
+                    // ),
+                    // Material(
+                    //   color: Colors.transparent,
+                    //   child: InkWell(
+                    //     onTap: () {},
+                    //     hoverColor: hoverColor,
+                    //     borderRadius: BorderRadius.circular(14),
+                    //     child: Ink(
+                    //       decoration: BoxDecoration(
+                    //         // color: hoverColor,
+                    //         borderRadius: BorderRadius.circular(14),
+                    //       ),
+                    //       child: Stack(
+                    //         alignment: Alignment.center,
+                    //         children: [
+                    //           Padding(
+                    //             padding: EdgeInsets.symmetric(
+                    //                 vertical: 26.h, horizontal: 30.w),
+                    //           ),
+                    //           Image.asset(
+                    //             Images.userIcon,
+                    //             width: 22.w,
+                    //             height: 22.h,
+                    //           ),
+                    //         ],
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                    // SizedBox(
+                    //   height: 10.h,
+                    // ),
+                    // Material(
+                    //   color: Colors.transparent,
+                    //   child: InkWell(
+                    //     onTap: () {},
+                    //     hoverColor: hoverColor,
+                    //     borderRadius: BorderRadius.circular(14),
+                    //     child: Ink(
+                    //       decoration: BoxDecoration(
+                    //         // color: hoverColor,
+                    //         borderRadius: BorderRadius.circular(14),
+                    //       ),
+                    //       child: Stack(
+                    //         alignment: Alignment.center,
+                    //         children: [
+                    //           Padding(
+                    //             padding: EdgeInsets.symmetric(
+                    //                 vertical: 26.h, horizontal: 30.w),
+                    //           ),
+                    //           Image.asset(
+                    //             Images.settingsIcon,
+                    //             width: 22.w,
+                    //             height: 22.h,
+                    //           ),
+                    //         ],
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

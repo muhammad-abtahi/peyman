@@ -24,7 +24,7 @@ class SignUpThird extends StatelessWidget {
         const SignUpHeader(
           infoText:
               'Keep your head steady so we can take your picture and match it with the records.',
-          stageNumber: "3",
+          stageNumber: 3,
           label: 'Facial Recognition',
         ),
         SizedBox(

@@ -24,5 +24,5 @@ class Images {
   static const String dashboardImage = 'images/dashboard-image.png';
   static const String activeStepper = 'images/activeStepper-icon.png';
   static const String currentStepper = 'images/currentStepper-icon.png';
-  static const String remainingStepper = 'images/remainigStepper-icon.png';
+  static const String remainingStepper = 'images/remainingStepper-icon.png';
 }

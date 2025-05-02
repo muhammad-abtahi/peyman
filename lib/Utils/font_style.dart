@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:peyman/Utils/app_colors.dart';
+import 'package:peyman/widgets/responsive/adaptive_reolution.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 extension ResponsiveTextStyle on TextStyle {
@@ -92,6 +93,7 @@ TextStyle getStepperHeadingTextStyle(BuildContext context) {
 TextStyle getStepperInfoTextStyle(BuildContext context) {
   return GoogleFonts.archivo(
     color: stepperInfoColor,
+    height: 1.5,
     fontSize: 14,
   ).responsive(context);
 }
@@ -108,6 +110,22 @@ TextStyle getDashBoardHeadingTextStyle(BuildContext context) {
     color: Colors.black,
     fontSize: 26,
     fontWeight: FontWeight.bold,
+  ).responsive(context);
+}
+
+TextStyle getDialogBoxHeadingTextStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: Colors.black,
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+  ).responsive(context);
+}
+
+TextStyle getDialogBoxInfoTextStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: dialogBoxInfoColor,
+    height: 1.5,
+    fontSize: 18,
   ).responsive(context);
 }
 

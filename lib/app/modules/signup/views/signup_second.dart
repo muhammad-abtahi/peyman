@@ -20,7 +20,7 @@ class SignUpSecond extends StatelessWidget {
         const SignUpHeader(
           infoText:
               'Please scan your documents such as emirates ID, passport etc.',
-          stageNumber: "2",
+          stageNumber: 2,
           label: 'Identity Verification',
         ),
         SizedBox(

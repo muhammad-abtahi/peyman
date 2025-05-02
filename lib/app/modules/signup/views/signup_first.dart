@@ -27,11 +27,8 @@ class SignUpFirst extends StatelessWidget {
         const SignUpHeader(
           infoText:
               'Please enter your personal information e.g. name, address, date of birth, etc.',
-          stageNumber: "1",
+          stageNumber: 1,
           label: 'Personal Info',
-        ),
-        SizedBox(
-          height: 30.h,
         ),
         CustomTextfield(
           controller: controller.emailAddress,
@@ -91,7 +88,7 @@ class SignUpFirst extends StatelessWidget {
           },
         ),
         SizedBox(
-          height: 230.h,
+          height: 185.h,
         ),
         Center(
           child: Row(

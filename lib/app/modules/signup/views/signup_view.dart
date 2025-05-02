@@ -196,7 +196,7 @@ class _FormWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        top: 70.h,
+        top: 75.h,
         left: 80.w,
         right: 80.w,
         bottom: 32.h,

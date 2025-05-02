@@ -9,10 +9,12 @@ class CustomButton extends StatelessWidget {
       required this.label,
       required this.onPressed,
       this.backgroundColor,
+      this.height = 58,
       this.textColor});
   final String label;
   final Color? backgroundColor;
   final Color? textColor;
+  final double height;
 
   final void Function()? onPressed;
   @override
@@ -20,7 +22,7 @@ class CustomButton extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 30.h),
       width: double.infinity,
-      height: 58.h,
+      height: height.h,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(

@@ -18,3 +18,5 @@ const searchTextFieldFillColor = Color(0xffF2F1F3);
 const dashboardScaffoldColor = Color(0xffF2F1F3);
 const totalSteperColor = Color(0xffB6B2BC);
 const stepperInfoColor = Color(0xff3D3C42);
+const dialogBoxInfoColor = Color(0xff3D3C42);
+
