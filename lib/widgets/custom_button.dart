@@ -20,7 +20,7 @@ class CustomButton extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 30.h),
       width: double.infinity,
-      height: 58,
+      height: 58.h,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(

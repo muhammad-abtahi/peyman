@@ -91,7 +91,7 @@ class SignUpFirst extends StatelessWidget {
           },
         ),
         SizedBox(
-          height: 200.h,
+          height: 230.h,
         ),
         Center(
           child: Row(

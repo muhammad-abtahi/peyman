@@ -41,6 +41,8 @@ dependencies:
   responsive_framework: ^1.5.1
   dotted_line: ^3.2.3
   smooth_page_indicator: ^1.2.1
+  easy_stepper: ^0.8.5+1
+  dotted_border: ^2.1.0
 
 dev_dependencies:
   flutter_test:

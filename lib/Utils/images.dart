@@ -22,4 +22,7 @@ class Images {
   static const String profilePicture = 'images/profile-picture.png';
   static const String dropDownIcon = 'images/dropDown-icon.png';
   static const String dashboardImage = 'images/dashboard-image.png';
+  static const String activeStepper = 'images/activeStepper-icon.png';
+  static const String currentStepper = 'images/currentStepper-icon.png';
+  static const String remainingStepper = 'images/remainigStepper-icon.png';
 }

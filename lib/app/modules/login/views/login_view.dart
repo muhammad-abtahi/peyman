@@ -109,22 +109,21 @@ class _FormWidget extends StatelessWidget {
                     hintText: '1-1234567-1');
               } else if (controller.selectedId.value ==
                   controller.dateOfBirthRadioId.value) {
-                return CustomTextfield(
-                    controller: controller.date,
-                    suffix: GestureDetector(
-                      onTap: () {
-                        controller.pickDate(context);
-                      },
-                      child: Padding(
+                return GestureDetector(
+                  onTap: () {
+                    controller.pickDate(context);
+                  },
+                  child: CustomTextfield(
+                      controller: controller.date,
+                      suffix: Padding(
                         padding: const EdgeInsets.only(right: 12.0),
                         child: Image.asset(
                           Images.calendar,
                           width: 30,
                         ),
                       ),
-                    ),
-                    readOnly: true,
-                    hintText: 'date of birth');
+                      hintText: 'date of birth'),
+                );
               } else {
                 return CustomTextfield(
                     controller: controller.passportNo,
@@ -159,7 +158,7 @@ class _FormWidget extends StatelessWidget {
           SizedBox(
             height: 40.h,
           ),
-          InkWell(
+          GestureDetector(
             onTap: () {},
             child: const FingerPrintLogin(),
           ),
@@ -243,189 +242,184 @@ class RadioButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 20.h),
-      child:
-
-
-          Get.width >= 1440
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Obx(
-                      () => GestureDetector(
-                        onTap: () {
-                          controller.selectedId.value =
-                              controller.emiratesRadioId.value;
-                          controller.update();
-                        },
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              controller.selectedId.value ==
-                                      controller.emiratesRadioId.value
-                                  ? Images.radioSelected
-                                  : Images.radioUnselected,
-                              height: 18,
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'Emirates ID',
-                              style: getFontStyle(context),
-                            ),
-                          ],
+      child: Get.width >= 1440
+          ? Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Obx(
+                  () => GestureDetector(
+                    onTap: () {
+                      controller.selectedId.value =
+                          controller.emiratesRadioId.value;
+                      controller.update();
+                    },
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          controller.selectedId.value ==
+                                  controller.emiratesRadioId.value
+                              ? Images.radioSelected
+                              : Images.radioUnselected,
+                          height: 18,
                         ),
-                      ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Emirates ID',
+                          style: getFontStyle(context),
+                        ),
+                      ],
                     ),
-                    Obx(
-                      () => GestureDetector(
-                        onTap: () {
-                          controller.selectedId.value =
-                              controller.dateOfBirthRadioId.value;
-                          controller.update();
-                        },
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              controller.selectedId.value ==
-                                      controller.dateOfBirthRadioId.value
-                                  ? Images.radioSelected
-                                  : Images.radioUnselected,
-                              height: 18,
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'Date of Birth',
-                              style: getFontStyle(context),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Obx(
-                      () => GestureDetector(
-                        onTap: () {
-                          controller.selectedId.value =
-                              controller.passportRadioId.value;
-                          controller.update();
-                        },
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              controller.selectedId.value ==
-                                      controller.passportRadioId.value
-                                  ? Images.radioSelected
-                                  : Images.radioUnselected,
-                              height: 18,
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'Passport Number',
-                              style: getFontStyle(context),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
-                )
-              : Wrap(
-                  spacing: 15,
-                  runSpacing: 15,
-                  alignment: WrapAlignment.center,
-                  runAlignment: WrapAlignment.center,
-                  children: [
-                    Obx(
-                      () => GestureDetector(
-                        onTap: () {
-                          controller.selectedId.value =
-                              controller.emiratesRadioId.value;
-                          controller.update();
-                        },
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              controller.selectedId.value ==
-                                      controller.emiratesRadioId.value
-                                  ? Images.radioSelected
-                                  : Images.radioUnselected,
-                              width: 17,
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'Emirates ID',
-                              style: getFontStyle(context),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Obx(
-                      () => GestureDetector(
-                        onTap: () {
-                          controller.selectedId.value =
-                              controller.dateOfBirthRadioId.value;
-                          controller.update();
-                        },
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              controller.selectedId.value ==
-                                      controller.dateOfBirthRadioId.value
-                                  ? Images.radioSelected
-                                  : Images.radioUnselected,
-                              width: 17,
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'Date of Birth',
-                              style: getFontStyle(context),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Obx(
-                      () => GestureDetector(
-                        onTap: () {
-                          controller.selectedId.value =
-                              controller.passportRadioId.value;
-                          controller.update();
-                        },
-                        child: Row(
-                          children: [
-                            Image.asset(
-                              controller.selectedId.value ==
-                                      controller.passportRadioId.value
-                                  ? Images.radioSelected
-                                  : Images.radioUnselected,
-                              width: 17,
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'Passport Number',
-                              style: getFontStyle(context),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
+                  ),
                 ),
+                Obx(
+                  () => GestureDetector(
+                    onTap: () {
+                      controller.selectedId.value =
+                          controller.dateOfBirthRadioId.value;
+                      controller.update();
+                    },
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          controller.selectedId.value ==
+                                  controller.dateOfBirthRadioId.value
+                              ? Images.radioSelected
+                              : Images.radioUnselected,
+                          height: 18,
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Date of Birth',
+                          style: getFontStyle(context),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Obx(
+                  () => GestureDetector(
+                    onTap: () {
+                      controller.selectedId.value =
+                          controller.passportRadioId.value;
+                      controller.update();
+                    },
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          controller.selectedId.value ==
+                                  controller.passportRadioId.value
+                              ? Images.radioSelected
+                              : Images.radioUnselected,
+                          height: 18,
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Passport Number',
+                          style: getFontStyle(context),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            )
+          : Wrap(
+              spacing: 15,
+              runSpacing: 15,
+              alignment: WrapAlignment.center,
+              runAlignment: WrapAlignment.center,
+              children: [
+                Obx(
+                  () => GestureDetector(
+                    onTap: () {
+                      controller.selectedId.value =
+                          controller.emiratesRadioId.value;
+                      controller.update();
+                    },
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          controller.selectedId.value ==
+                                  controller.emiratesRadioId.value
+                              ? Images.radioSelected
+                              : Images.radioUnselected,
+                          width: 17,
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Emirates ID',
+                          style: getFontStyle(context),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Obx(
+                  () => GestureDetector(
+                    onTap: () {
+                      controller.selectedId.value =
+                          controller.dateOfBirthRadioId.value;
+                      controller.update();
+                    },
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          controller.selectedId.value ==
+                                  controller.dateOfBirthRadioId.value
+                              ? Images.radioSelected
+                              : Images.radioUnselected,
+                          width: 17,
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Date of Birth',
+                          style: getFontStyle(context),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Obx(
+                  () => GestureDetector(
+                    onTap: () {
+                      controller.selectedId.value =
+                          controller.passportRadioId.value;
+                      controller.update();
+                    },
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          controller.selectedId.value ==
+                                  controller.passportRadioId.value
+                              ? Images.radioSelected
+                              : Images.radioUnselected,
+                          width: 17,
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Passport Number',
+                          style: getFontStyle(context),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
     );
   }
 }

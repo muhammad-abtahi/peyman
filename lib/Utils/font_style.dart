@@ -27,6 +27,22 @@ TextStyle getHeadingStyle(BuildContext context) {
   ).responsive(context);
 }
 
+TextStyle getCompletedStepsStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: Colors.black,
+    fontSize: 50,
+    fontWeight: FontWeight.bold,
+  ).responsive(context);
+}
+
+TextStyle getTotalStepsStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: totalSteperColor,
+    fontSize: 50,
+    fontWeight: FontWeight.bold,
+  ).responsive(context);
+}
+
 TextStyle getSubHeadingStyle(BuildContext context) {
   return GoogleFonts.archivo(
     color: Colors.black,
@@ -62,6 +78,21 @@ TextStyle getHintTextStyle(BuildContext context) {
   return GoogleFonts.archivo(
     color: hintTextColor,
     fontSize: 17,
+  ).responsive(context);
+}
+
+TextStyle getStepperHeadingTextStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: Colors.black,
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+  ).responsive(context);
+}
+
+TextStyle getStepperInfoTextStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: stepperInfoColor,
+    fontSize: 14,
   ).responsive(context);
 }
 

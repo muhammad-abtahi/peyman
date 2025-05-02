@@ -4,18 +4,15 @@ import 'package:get/get.dart';
 import 'package:peyman/Utils/app_colors.dart';
 import 'package:peyman/Utils/font_style.dart';
 import 'package:peyman/Utils/images.dart';
+import 'package:peyman/app/routes/app_pages.dart';
 import 'package:peyman/widgets/custom_button.dart';
 import 'package:peyman/widgets/responsive/adaptive_reolution.dart';
 import 'package:peyman/widgets/signUp_header.dart';
 
 import '../controllers/signup_controller.dart';
 
-
 class SignUpThird extends StatelessWidget {
-  const SignUpThird({
-    required this.controller,
-    super.key
-  });
+  const SignUpThird({required this.controller, super.key});
 
   final SignUpController controller;
 
@@ -72,7 +69,12 @@ class SignUpThird extends StatelessWidget {
             ),
           ],
         ),
-        CustomButton(label: 'Sign Up', onPressed: () {}),
+        CustomButton(
+          label: 'Sign Up',
+          onPressed: () {
+            Get.toNamed(Routes.login);
+          },
+        ),
       ],
     );
   }
