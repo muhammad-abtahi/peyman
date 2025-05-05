@@ -25,4 +25,19 @@ class Images {
   static const String activeStepper = 'images/activeStepper-icon.png';
   static const String currentStepper = 'images/currentStepper-icon.png';
   static const String remainingStepper = 'images/remainingStepper-icon.png';
+  static const String backIcon = 'images/back-icon.png';
+  static const String signUpDialogImage = 'images/signup-dialog-icon.png';
+  static const String dashboardBannerContainer =
+      'images/dashboardBanner-container.png';
+  static const String dashboardTileButton =
+      'images/dashboardTileButton-icon.png';
+  static const String dashboardTileSellPurchaseImage =
+      'images/dashboardTileSellPurchase-image.png';
+  static const String dashboardTileBuyImage =
+      'images/dashboardTileBuy-image.png';
+  static const String dashboardTileTenancyImage =
+      'images/dashboardTileTenancy-image.png';
+  static const String contractAiBannerIcon = 'images/magicAi-icon.png';
+  static const String documentUploadIcon = 'images/documentUpload-icon.png';
+  static const String videoImage = 'images/video-image.png';
 }

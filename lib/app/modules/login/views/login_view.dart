@@ -21,21 +21,17 @@ class LoginView extends GetView<LoginController> {
     return Scaffold(
       body: ResponsiveLayout(
         dekstopWidget: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Expanded(
-              child: SingleChildScrollView(
-                child: IntrinsicHeight(
-                  child: _FormWidget(controller: controller),
-                ),
-              ),
+              child: _FormWidget(controller: controller),
             ),
             _imageContainer(context),
           ],
         ),
         mobileWidget: Expanded(
-          child: SingleChildScrollView(
-            child: _FormWidget(controller: controller),
-          ),
+          child: _FormWidget(controller: controller),
         ),
       ),
     );
@@ -75,16 +71,16 @@ class _FormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      height: Get.height,
       padding: EdgeInsets.only(
-        top: 70.h,
+        top: 75.h,
         left: 80.w,
         right: 80.w,
         bottom: 32.h,
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        // mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const SignUpHeader(
             infoText:
@@ -162,9 +158,7 @@ class _FormWidget extends StatelessWidget {
             onTap: () {},
             child: const FingerPrintLogin(),
           ),
-          SizedBox(
-            height: 231.h,
-          ),
+          Spacer(),
           Center(
             child: Row(
               mainAxisSize: MainAxisSize.min,

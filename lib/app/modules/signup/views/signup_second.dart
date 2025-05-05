@@ -15,7 +15,6 @@ class SignUpSecond extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SignUpHeader(
           infoText:
@@ -31,14 +30,14 @@ class SignUpSecond extends StatelessWidget {
           height: 404.h,
           width: 550.w,
         ),
-        SizedBox(
-          height: 30.h,
-        ),
+        Spacer(),
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Expanded(
+            SizedBox(
+              width: 160.w,
               child: CustomButton(
+                backButton: true,
                 label: 'Back',
                 backgroundColor: primaryShade,
                 textColor: primaryColor,

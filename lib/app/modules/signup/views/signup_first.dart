@@ -30,6 +30,9 @@ class SignUpFirst extends StatelessWidget {
           stageNumber: 1,
           label: 'Personal Info',
         ),
+        SizedBox(
+          height: 30.h,
+        ),
         CustomTextfield(
           controller: controller.emailAddress,
           hintText: "Enter Email Addresss",
@@ -39,7 +42,7 @@ class SignUpFirst extends StatelessWidget {
         ),
         Container(
           width: double.infinity,
-          padding: const EdgeInsets.all(20),
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
           alignment: Alignment.topCenter,
           decoration: const BoxDecoration(
             color: warningContainerColor,
@@ -51,12 +54,13 @@ class SignUpFirst extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 12.0, bottom: 0, top: 7),
-                child: Image.asset(
-                  Images.alert,
-                  width: 20,
-                ),
+              Image.asset(
+                Images.alert,
+                width: 30.w,
+                height: 30.h,
+              ),
+              SizedBox(
+                width: 10.w,
               ),
               Expanded(
                 child: Text(
@@ -87,9 +91,7 @@ class SignUpFirst extends StatelessWidget {
             controller.update();
           },
         ),
-        SizedBox(
-          height: 185.h,
-        ),
+        Spacer(),
         Center(
           child: Row(
             mainAxisSize: MainAxisSize.min,

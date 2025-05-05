@@ -9,9 +9,12 @@ import 'package:peyman/app/modules/signup/views/signup_second.dart';
 import 'package:peyman/app/modules/signup/views/signup_third.dart';
 
 class SignUpController extends GetxController {
-  RxInt emiratesRadioId = 0.obs;
-  RxInt passportRadioId = 1.obs;
-  RxInt selectedId = 0.obs;
+  RxInt sellerRadioId = 0.obs;
+  RxInt buyerRadioId = 1.obs;
+  RxInt affiliatorRadioId = 2.obs;
+  RxInt selectedRadioId = 0.obs;
+
+
 
   RxBool permissionToStoreImage = false.obs;
 

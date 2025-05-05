@@ -13,14 +13,11 @@ class SignUpView extends GetView<SignUpController> {
     return Scaffold(
       body: ResponsiveLayout(
         dekstopWidget: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: SingleChildScrollView(
-                child: IntrinsicHeight(
-                  child: _FormWidget(controller: controller),
-                ),
-              ),
-            ),
+                child: SingleChildScrollView(
+                    child: _FormWidget(controller: controller))),
             _imageContainer(context),
           ],
         ),
@@ -33,97 +30,89 @@ class SignUpView extends GetView<SignUpController> {
     );
   }
 
-  Widget buildPage() {
-    return Expanded(
-      child: Container(
-        height: Get.height,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(Images.signUpBackground),
-            fit: BoxFit.cover,
-          ),
-        ),
-        alignment: Alignment.bottomLeft,
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 100.h, horizontal: 61.w),
-          child: Image.asset(
-            Images.signUpText,
-            height: 158.h,
-            width: 417.w,
-            fit: BoxFit.contain,
-          ),
+  Widget buildPage1() {
+    return Container(
+      height: Get.height,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(Images.signUpBackground),
+          fit: BoxFit.cover,
         ),
       ),
-    );
-  }
-
-  Widget buildPage1() {
-    return Expanded(
-      child: Container(
-        height: Get.height,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(Images.signUpBackground),
-            fit: BoxFit.cover,
-          ),
-        ),
-        alignment: Alignment.bottomLeft,
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 100.h, horizontal: 61.w),
-          child: Image.asset(
-            Images.signUpText,
-            height: 158.h,
-            width: 417.w,
-            fit: BoxFit.contain,
-          ),
+      alignment: Alignment.bottomLeft,
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 100.h, horizontal: 61.w),
+        child: Image.asset(
+          Images.signUpText,
+          height: 158.h,
+          width: 417.w,
+          fit: BoxFit.contain,
         ),
       ),
     );
   }
 
   Widget buildPage2() {
-    return Expanded(
-      child: Container(
-        height: Get.height,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(Images.signUpBackground),
-            fit: BoxFit.cover,
-          ),
+    return Container(
+      height: Get.height,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(Images.signUpBackground),
+          fit: BoxFit.cover,
         ),
-        alignment: Alignment.bottomLeft,
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 100.h, horizontal: 61.w),
-          child: Image.asset(
-            Images.signUpText,
-            height: 158.h,
-            width: 417.w,
-            fit: BoxFit.contain,
-          ),
+      ),
+      alignment: Alignment.bottomLeft,
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 100.h, horizontal: 61.w),
+        child: Image.asset(
+          Images.signUpText,
+          height: 158.h,
+          width: 417.w,
+          fit: BoxFit.contain,
         ),
       ),
     );
   }
 
   Widget buildPage3() {
-    return Expanded(
-      child: Container(
-        height: Get.height,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(Images.signUpBackground),
-            fit: BoxFit.cover,
-          ),
+    return Container(
+      height: Get.height,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(Images.signUpBackground),
+          fit: BoxFit.cover,
         ),
-        alignment: Alignment.bottomLeft,
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 100.h, horizontal: 61.w),
-          child: Image.asset(
-            Images.signUpText,
-            height: 158.h,
-            width: 417.w,
-            fit: BoxFit.contain,
-          ),
+      ),
+      alignment: Alignment.bottomLeft,
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 100.h, horizontal: 61.w),
+        child: Image.asset(
+          Images.signUpText,
+          height: 158.h,
+          width: 417.w,
+          fit: BoxFit.contain,
+        ),
+      ),
+    );
+  }
+
+  Widget buildPage4() {
+    return Container(
+      height: Get.height,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(Images.signUpBackground),
+          fit: BoxFit.cover,
+        ),
+      ),
+      alignment: Alignment.bottomLeft,
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 100.h, horizontal: 61.w),
+        child: Image.asset(
+          Images.signUpText,
+          height: 158.h,
+          width: 417.w,
+          fit: BoxFit.contain,
         ),
       ),
     );
@@ -134,16 +123,14 @@ class SignUpView extends GetView<SignUpController> {
       child: Stack(
         alignment: Alignment.bottomRight,
         children: [
-          Expanded(
-            child: PageView(
-              controller: controller.pageController,
-              children: [
-                buildPage(),
-                buildPage1(),
-                buildPage2(),
-                buildPage3(),
-              ],
-            ),
+          PageView(
+            controller: controller.pageController,
+            children: [
+              buildPage1(),
+              buildPage2(),
+              buildPage3(),
+              buildPage4(),
+            ],
           ),
           Container(
             alignment: Alignment.bottomRight,
@@ -194,12 +181,13 @@ class _FormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      height: Get.height,
       padding: EdgeInsets.only(
         top: 75.h,
         left: 80.w,
         right: 80.w,
-        bottom: 32.h,
+        bottom: 30.h,
       ),
       child: GetBuilder<SignUpController>(
         builder: (controller) => AnimatedSwitcher(

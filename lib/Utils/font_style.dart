@@ -59,6 +59,13 @@ TextStyle getFontStyle(BuildContext context) {
   ).responsive(context);
 }
 
+TextStyle getSignUpRadioStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: primaryColor,
+    fontSize: 19,
+  ).responsive(context);
+}
+
 TextStyle getWarningFontStyle(BuildContext context) {
   return GoogleFonts.archivo(
     color: warningTextColor,
@@ -109,14 +116,29 @@ TextStyle getDashBoardHeadingTextStyle(BuildContext context) {
   return GoogleFonts.archivo(
     color: Colors.black,
     fontSize: 26,
+    fontWeight: FontWeight.w500,
+  ).responsive(context);
+}
+
+TextStyle getDashBoardTileHeadingTextStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: primaryColor,
+    fontSize: 22,
     fontWeight: FontWeight.bold,
+  ).responsive(context);
+}
+
+TextStyle getDashBoardTileInfoTextStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: dashboardTilesInfoTextColor,
+    fontSize: 14,
   ).responsive(context);
 }
 
 TextStyle getDialogBoxHeadingTextStyle(BuildContext context) {
   return GoogleFonts.archivo(
     color: Colors.black,
-    fontSize: 30,
+    fontSize: 28,
     fontWeight: FontWeight.bold,
   ).responsive(context);
 }
@@ -131,7 +153,7 @@ TextStyle getDialogBoxInfoTextStyle(BuildContext context) {
 
 TextStyle getDashBoardBannerHeadingTextStyle(BuildContext context) {
   return GoogleFonts.archivo(
-    color: primaryColor,
+    color: Colors.white,
     fontSize: 22,
     fontWeight: FontWeight.bold,
   ).responsive(context);
@@ -139,7 +161,8 @@ TextStyle getDashBoardBannerHeadingTextStyle(BuildContext context) {
 
 TextStyle getDashBoardBannerInfoTextStyle(BuildContext context) {
   return GoogleFonts.archivo(
-    color: primaryColor,
+    color: Colors.white,
+    height: 1.5,
     fontSize: 16,
   ).responsive(context);
 }
@@ -149,6 +172,20 @@ TextStyle getDashBoardSubHeadingTextStyle(BuildContext context) {
     color: Colors.black,
     fontSize: 22,
   ).responsive(context);
+}
+
+TextStyle getDocumentContainerHeadingTextStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+          color: documentContainerTextColor,
+          fontSize: 20,
+          fontWeight: FontWeight.bold)
+      .responsive(context);
+}
+
+TextStyle getDocumentContainerInfoTextStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+          color: documentContainerTextColor, fontSize: 16, height: 1.5)
+      .responsive(context);
 }
 
 TextStyle getButtonTextStyle(BuildContext context) {
