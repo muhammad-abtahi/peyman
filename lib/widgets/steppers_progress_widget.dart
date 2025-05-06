@@ -35,15 +35,30 @@ class SteppersProgressWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RichText(
-              text: TextSpan(
-                style: getCompletedStepsStyle(context),
-                children: [
-                  TextSpan(text: '${activeStep + 1}'),
-                  TextSpan(
-                      text: '/$totalSteps', style: getTotalStepsStyle(context)),
-                ],
-              ),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Only the changing part is inside AnimatedSwitcher
+                AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  transitionBuilder: (child, animation) {
+                    return FadeTransition(
+                      opacity: animation,
+                      child: child,
+                    );
+                  },
+                  child: Text(
+                    '${activeStep + 1}',
+                    key: ValueKey<int>(activeStep),
+                    style: getCompletedStepsStyle(context),
+                  ),
+                ),
+                // Static part doesn't need animation
+                Text(
+                  '/$totalSteps',
+                  style: getTotalStepsStyle(context),
+                ),
+              ],
             ),
             SizedBox(
               height: 3.h,
@@ -67,12 +82,32 @@ class SteppersProgressWidget extends StatelessWidget {
                             color: primaryShade,
                             borderRadius: BorderRadius.circular(50)),
                       ),
-                      Container(
-                        height: 8.h,
-                        width: progressWidth,
-                        decoration: BoxDecoration(
-                            color: primaryColor,
-                            borderRadius: BorderRadius.circular(50)),
+                      TweenAnimationBuilder(
+                        curve: Curves.easeInOut,
+                        duration: const Duration(milliseconds: 300),
+                        tween: Tween<double>(
+                          begin: 0,
+                          end: progressWidth,
+                        ),
+                        builder: (context, value, child) {
+                          return Container(
+                            height: 8.h,
+                            width: value,
+                            decoration: BoxDecoration(
+                              color: primaryColor,
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                          );
+                        },
+
+                        // child: Container(
+                        //   height: 8.h,
+                        //   width: progressWidth,
+                        //   decoration: BoxDecoration(
+                        //     color: primaryColor,
+                        //     borderRadius: BorderRadius.circular(50),
+                        //   ),
+                        // ),
                       )
                     ],
                   ),
@@ -84,7 +119,7 @@ class SteppersProgressWidget extends StatelessWidget {
                   '${clampedPercentage.toInt()}%',
                   style: getFontStyle(context).copyWith(
                       color: primaryColor, fontWeight: FontWeight.bold),
-                )
+                ),
               ],
             ),
             SizedBox(
@@ -107,14 +142,28 @@ class SteppersProgressWidget extends StatelessWidget {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Image.asset(
-                              activeStep > index
-                                  ? Images.currentStepper
-                                  : activeStep == index
-                                      ? Images.activeStepper
-                                      : Images.remainingStepper,
-                              width: 24.w,
-                              height: 24.h,
+                            AnimatedSwitcher(
+                              transitionBuilder: (child, animation) {
+                                return FadeTransition(
+                                  opacity: animation,
+                                  child: child,
+                                );
+                              },
+                              duration: const Duration(milliseconds: 300),
+                              child: Image.asset(
+                                activeStep > index
+                                    ? Images.currentStepper
+                                    : activeStep == index
+                                        ? Images.activeStepper
+                                        : Images.remainingStepper,
+                                key: ValueKey<String>(activeStep > index
+                                    ? 'completed'
+                                    : activeStep == index
+                                        ? 'active'
+                                        : 'remaining'),
+                                width: 24.w,
+                                height: 24.h,
+                              ),
                             ),
                             SizedBox(
                               height: 6.h,
@@ -148,22 +197,56 @@ class SteppersProgressWidget extends StatelessWidget {
                                 title,
                                 style: getStepperHeadingTextStyle(context),
                               ),
-                              if (activeStep == index) ...[
-                                SizedBox(
-                                  height: 10.h,
+                              // GetBuilder<DashBoardController>(
+                              //     builder: (controller) {
+                              //   return
+                              AnimatedSwitcher(
+                                transitionBuilder: (child, animation) {
+                                  final curvedAnimation = CurvedAnimation(
+                                    parent: animation,
+                                    curve: Curves.easeInOut,
+                                  );
+
+                                  return FadeTransition(
+                                    opacity: curvedAnimation,
+                                    child: SizeTransition(
+                                      sizeFactor: curvedAnimation,
+                                      axisAlignment: 0,
+                                      child: child,
+                                    ),
+                                  );
+                                },
+                                duration: const Duration(milliseconds: 1000),
+                                reverseDuration:
+                                    const Duration(milliseconds: 300),
+                                child: SizedBox(
+                                  key: ValueKey<int>(
+                                      activeStep == index ? 1 : 0),
+                                  height: activeStep == index ? null : 40.h,
+                                  child: Column(
+                                    children: [
+                                      if (activeStep == index) ...[
+                                        SizedBox(
+                                          height: 10.h,
+                                        ),
+                                        Text(
+                                          info ?? "",
+                                          style:
+                                              getStepperInfoTextStyle(context),
+                                        ),
+                                        SizedBox(
+                                          height: 10.h,
+                                        ),
+                                      ] else ...[
+                                        SizedBox(
+                                          height: 40.h,
+                                        ),
+                                      ],
+                                    ],
+                                  ),
                                 ),
-                                Text(
-                                  info ?? "",
-                                  style: getStepperInfoTextStyle(context),
-                                ),
-                                SizedBox(
-                                  height: 10.h,
-                                ),
-                              ] else ...[
-                                SizedBox(
-                                  height: 40.h,
-                                ),
-                              ],
+                              ),
+                              // }),
                             ],
                           ),
                         )
@@ -247,7 +330,7 @@ class _VerticalDashedLinePainter extends CustomPainter {
         currentDashHeight,
       );
 
-      final rrect = RRect.fromRectAndRadius(rect, Radius.circular(14));
+      final rrect = RRect.fromRectAndRadius(rect, const Radius.circular(14));
       canvas.drawRRect(rrect, paint);
 
       startY += currentDashHeight + dashSpacing;

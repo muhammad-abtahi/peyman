@@ -5,7 +5,7 @@ const primaryShade = Color(0xffCEC0E5);
 
 const backgroundColor = Colors.white;
 const dashboardScaffoldColor = Color(0xffF2F1F3);
-const dialogBoxBackgroundColor = Color(0xff06021C);
+const dialogBoxBackgroundColor = Color.fromARGB(220, 6, 2, 40);
 
 const infoColor = Color(0xFF1A1825);
 const textFieldBorderColor = Color(0xFFBEBBC4);
@@ -39,3 +39,16 @@ const contractAiBannerColor = Color(0xff190D38);
 const documentContainerColor = Color(0xffF2F1F3);
 const documentContainerBorderColor = Color(0xffB6B2BC);
 const documentContainerTextColor = Color(0xff26252F);
+
+const contractAWarningBannerColor = Color(0xffFFFBEB);
+const contractAWarningBannerBorderColor = Color(0xffD97706);
+const contractAWarningBannerTextColor = Color(0xffD97706);
+
+const contractASellerContainerColor = Color(0xffEFE7FD);
+const contractASellerContainerBorderColor = Color(0xff7D56BB);
+const contractASellerContainerTextColor = Color(0xff7D56BB);
+const contractASellerContainerInfoTextColor = Color(0xff3D3C42);
+const contractAOtherOwnerContainerBorderColor = Color(0xffE5E4E7);
+const kycVerifiedTextColor = Color(0xff49ADF4);
+const kycNotVerifiedTextColor = Color(0xffFF0000);
+const kycNotVerfiedTextInfoColor = Color(0xff9D9D9D);

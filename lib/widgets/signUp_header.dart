@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:peyman/Utils/app_colors.dart';
 import 'package:peyman/Utils/font_style.dart';
 import 'package:peyman/widgets/responsive/adaptive_reolution.dart';

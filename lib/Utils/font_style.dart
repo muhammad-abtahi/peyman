@@ -167,10 +167,73 @@ TextStyle getDashBoardBannerInfoTextStyle(BuildContext context) {
   ).responsive(context);
 }
 
+TextStyle getContractAWarningBannerTextStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: contractAWarningBannerTextColor,
+    height: 1.5,
+    fontSize: 16,
+  ).responsive(context);
+}
+
 TextStyle getDashBoardSubHeadingTextStyle(BuildContext context) {
   return GoogleFonts.archivo(
     color: Colors.black,
     fontSize: 22,
+  ).responsive(context);
+}
+
+TextStyle getContractAOtherOwnerHeadingTextStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: Colors.black,
+    fontWeight: FontWeight.bold,
+    fontSize: 22,
+  ).responsive(context);
+}
+
+TextStyle getContractAOtherOwnerSubHeadingTextStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: Colors.black,
+    fontWeight: FontWeight.w700,
+    fontSize: 16,
+  ).responsive(context);
+}
+
+TextStyle getKycVerifiedTextStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: kycVerifiedTextColor,
+    fontWeight: FontWeight.w500,
+    fontSize: 13,
+  ).responsive(context);
+}
+
+TextStyle getKycNotVerifiedTextStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: kycNotVerifiedTextColor,
+    fontWeight: FontWeight.w500,
+    fontSize: 13,
+  ).responsive(context);
+}
+
+TextStyle getKycNotVerifiedInfoTextStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: kycNotVerfiedTextInfoColor,
+    fontWeight: FontWeight.w400,
+    fontSize: 12,
+  ).responsive(context);
+}
+
+TextStyle getContractASellerContainerHeadingTexStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: contractASellerContainerTextColor,
+    fontWeight: FontWeight.bold,
+    fontSize: 18,
+  ).responsive(context);
+}
+
+TextStyle getContractASellerContainerInfoTexStyle(BuildContext context) {
+  return GoogleFonts.archivo(
+    color: contractASellerContainerInfoTextColor,
+    fontSize: 14,
   ).responsive(context);
 }
 

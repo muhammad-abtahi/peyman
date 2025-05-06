@@ -40,4 +40,12 @@ class Images {
   static const String contractAiBannerIcon = 'images/magicAi-icon.png';
   static const String documentUploadIcon = 'images/documentUpload-icon.png';
   static const String videoImage = 'images/video-image.png';
+  static const String warningIcon = 'images/warning-icon.png';
+  static const String profileImage = 'images/profile-picture-container.png';
+  static const String formsBackIcon = 'images/formsBack-icon.png';
+  static const String kycVerifiedIcon = 'images/kyc-verified-icon.png';
+  static const String kycNotVerifiedIcon = 'images/kyc-not-verified-icon.png';
+  static const String taImage = 'images/ta-image.png';
+  static const String zaImage = 'images/za-image.png';
+  static const String maImage = 'images/ma-image.png';
 }

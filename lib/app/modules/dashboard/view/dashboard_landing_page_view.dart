@@ -247,6 +247,7 @@ class DashboardLandingPage extends StatelessWidget {
                             onTap: () {
                               controller.currentPage.value =
                                   controller.currentContractAPage.value;
+                              controller.isContractA.value = true;
                               controller.update();
                             },
                             child: Image.asset(

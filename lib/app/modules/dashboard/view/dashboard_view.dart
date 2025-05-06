@@ -27,30 +27,27 @@ class DashBoardView extends GetView<DashBoardController> {
                   child: Padding(
                     padding:
                         EdgeInsets.symmetric(vertical: 35.h, horizontal: 30.w),
-                    child: Container(
-                      padding: EdgeInsets.only(
-                          bottom: 24.h, top: 40.h, left: 40.w, right: 40.w),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      width: double.infinity,
-                      // child: DashboardLandingPage(controller: controller),
-                      child: GetBuilder<DashBoardController>(
-                        builder: (controller) => AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 400),
-                          transitionBuilder:
-                              (Widget child, Animation<double> animation) {
-                            return FadeTransition(
-                              opacity: animation,
-                              child: child,
-                            );
-                          },
-                          child: Align(
-                            alignment: Alignment.topLeft,
-                            child: controller
-                                .pageOption[controller.currentPage.value],
+                    child: GetBuilder<DashBoardController>(
+                      builder: (controller) => AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 400),
+                        transitionBuilder:
+                            (Widget child, Animation<double> animation) {
+                          return FadeTransition(
+                            opacity: animation,
+                            child: child,
+                          );
+                        },
+                        child: Container(
+                          key: ValueKey<int>(controller.currentPage.value),
+                          padding: EdgeInsets.only(
+                              bottom: 24.h, top: 40.h, left: 40.w, right: 40.w),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(30),
                           ),
+                          width: double.infinity,
+                          child: controller
+                              .pageOption[controller.currentPage.value],
                         ),
                       ),
                     ),
@@ -61,17 +58,19 @@ class DashBoardView extends GetView<DashBoardController> {
           ),
           Obx(
             () {
-              // if (controller.currentPage.value ==
-              //     controller.currentContractAPage.value) {
-              return SteppersProgressWidget(
+              if (controller.isContractA.value) {
+                return SteppersProgressWidget(
                   stepTitles: controller.sellerStepperTitles,
                   stepInfo: controller.sellerSteperInfo,
                   activeStep: controller.activeStep.value,
                   totalSteps: controller.sellerStepperTitles.length,
-                  percentage: controller.activeStep.value);
-              // } else {
-              //   return SizedBox.shrink();
-              // }
+                  percentage: (controller.activeStep.value /
+                          controller.sellerStepperTitles.length) *
+                      100,
+                );
+              } else {
+                return SizedBox.shrink();
+              }
             },
           ),
         ],
